@@ -1,6 +1,6 @@
+// this function creates all possible permutations of a rock, paper, scissors match based on number of rounds
+
 function rockPaperPermutation (roundCount) {
-  // Write your code here, and
-  // return your final answer.
   var results = [];
   var rpsChoices = ['r','p','s'];
 

@@ -1,3 +1,5 @@
+// this function tests to see if a subset is part of a superset
+
 Array.prototype.isSubsetOf = function(array) {
   var isSubset = true;
 
@@ -9,6 +11,3 @@ Array.prototype.isSubsetOf = function(array) {
 
   return isSubset;
 };
-
-
-  

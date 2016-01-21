@@ -1,3 +1,6 @@
+// this function searches a rotated array where the pivot is in the middle
+// it essentially searches the array as if it was a binary search tree
+
 function rotatedArraySearch (rotated, target) {
   var midIndex = Math.floor(rotated.length/2);
   var ansIndex;
