@@ -1,4 +1,7 @@
-// this function creates all possible permutations of a rock, paper, scissors match based on number of rounds
+/*
+Rock Paper Permutation
+Given a number of rounds n, return all the possible rock-paper-scissors play possibilities for that number of rounds.
+*/
 
 function rockPaperPermutation (roundCount) {
   var results = [];

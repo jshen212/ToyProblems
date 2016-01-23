@@ -1,4 +1,7 @@
-// this function finds the first non-repeating character and returns it
+/*
+Non-repeated Character
+Given an arbitrary input string, return the first non-repeating character. For strings with all repeats, return 'sorry'.
+*/
 
 function firstNonRepeatedCharacter (string) {
   var count = 0;
