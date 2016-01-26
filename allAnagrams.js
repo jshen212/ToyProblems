@@ -48,9 +48,10 @@ function allAnagrams(string){
 
     for(var i=0; i<left.length; i++){
       word += left[i];
-      left = string.slice() +
+      left = string.slice(i);
     }
-    
+  }
+
   recurse('', string);
   return results;
 }
