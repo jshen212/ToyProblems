@@ -7,12 +7,10 @@ Tree.prototype.DFSelect = function(filter) {
       results.push(node.value);
     }
 
-    else {
       for(var i=0; i<node.children.length; i++){
         // depth++;
         recurse(node.children[i], depth+1);
         // depth--;
-      }
     }
   }
 
