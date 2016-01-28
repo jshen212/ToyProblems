@@ -1,6 +1,6 @@
+
+
 function bubbleSort (input) {
-  // Write your code here, and
-  // return your final answer.
 
   var temp;
   var swap;
