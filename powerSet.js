@@ -1,4 +1,4 @@
-function powerSet (string) {
+function powerSet(string) {
   var results = [''];
   noDupes = [];
   var lowerCaseSort = string.toLowerCase().split('').sort(function(a,b){
@@ -15,21 +15,19 @@ function powerSet (string) {
     }
   });
 
-  // this line makes a sorted array without duplicates
   for(var i = 0; i < lowerCaseSort.length; i++){
     if(noDupes.indexOf(lowerCaseSort[i])<0){
       noDupes.push(lowerCaseSort[i]);
     }
   }
 
-function recurse(string){
-  var word='';
-  for(var i = 0; i < noDupes.length; i++){
-    word = noDupes[i]+noDupes[i+1];
-    results.push(word);
-    recurse(word);
-  }
-}
+  var recurse = function(word, noDupes) {
+    for (var i = 0; i < noDupes.length; i++) {
+      results.push(word + noDupes[i]);
+      recurse(word + noDupes[i], noDupes.slice(i + 1));
+    }
+  };
 
+  recurse('', noDupes);
   return results;
 }
