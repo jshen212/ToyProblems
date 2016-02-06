@@ -16,19 +16,20 @@ You can think of pipe as moving left to right through its arguments.
 
 var compose = function(){
 var args = Array.prototype.slice.call(arguments);
-var temp;
+
   return function(input){
-    args.reduceRight(function(prev,curr){
-      if(args.length === 2){
-      temp = prev(input);
-      temp = curr(temp);
-    } else {
-      while(!temp){
-      temp = prev(input);
-      }
-      temp = curr(temp);
-    }
-    });
-    return temp;
-  };
+    return args.reduceRight(function(memo,fn){
+     return fn(memo);
+  },input);
+ };
+};
+
+var pipe = function(){
+var args = Array.prototype.slice.call(arguments);
+
+  return function(input){
+    return args.reduce(function(memo,fn){
+     return fn(memo);
+  },input);
+ };
 };
