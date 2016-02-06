@@ -37,14 +37,16 @@ function recurse(val){
   }
 
   else if (val>target){
+    //sees if the value has already been checked
     if(Math.floor(midIndex/2) === midIndex){
       ans=-1;
       return;
-    }
+    } else {
     midIndex = Math.floor(midIndex/2);
     recurse(array[midIndex]);
+    }
   }
-}
+ }
 
   recurse(array[midIndex]);
   return ans;
