@@ -12,42 +12,35 @@ Do NOT use Array.prototype.indexOf in your solution. What would be the fun in th
 */
 
 function binarySearch (array, target) {
-var midIndex = Math.floor(array.length/2);
 var ans;
 
-function recurse(val){
-  if(target > array[array.length-1] || target < array[0]){
+function recurse(start, end){
+  var mid = Math.floor((start+end)/2);
+  if(target < array[0] || target > array[array.length-1]){
     ans = -1;
     return;
   }
 
-   if(val === target){
-    ans = midIndex;
+  if(array[mid] === target){
+    ans = mid;
     return;
   }
 
-  else if(val<target){
-    if(Math.floor((array.length+midIndex)/2) === midIndex){
-      ans=-1;
-      return;
-    } else {
-    midIndex = Math.floor((array.length+midIndex)/2);
-    recurse(array[midIndex]);
-    }
+  else if(array[mid] > target){
+     end = mid;
+    recurse(start,end);
   }
 
-  else if (val>target){
-    //sees if the value has already been checked
-    if(Math.floor(midIndex/2) === midIndex){
-      ans=-1;
-      return;
-    } else {
-    midIndex = Math.floor(midIndex/2);
-    recurse(array[midIndex]);
-    }
+  else if(array[mid] < target){
+    start = mid;
+    recurse(start,end);
   }
- }
 
-  recurse(array[midIndex]);
+  else {
+    ans = -1;
+  }
+}
+
+  recurse(0, array.length);
   return ans;
 }
