@@ -11,3 +11,23 @@ function generateRange(min, max, step){
   }
   return arr;
 }
+
+
+// RECURSION VERSION
+// function generateRange(min, max, step){
+//   var arr = [];
+//   var count = 0;
+//
+//   function recurse(input){
+//     if(input === step){
+//       return;
+//     } else {
+//       for(var i = min; i <=max; i+=step){
+//         arr.push(i);
+//       }
+//     }
+//   }
+//
+//   recurse(count);
+//   return arr;
+// }
