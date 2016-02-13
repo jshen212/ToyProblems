@@ -7,28 +7,27 @@ If there are two runs of equal length, return the first one. Return [0,0] for no
 
 function longestRun (string) {
   var splitStr = string.split('');
-  var count = 0;
-  var longestCount = 0;
-  var letter;
+  var count = 1;
+  var longestCount = 1;
   var firstI;
   var lastI;
+  var isLonger = false;
 
-  for(var i = 0; i < string.length; i++){
+  for(var i = 0; i < string.length; i++, count = 1){
     for(var j = i+1; j < string.length; j++){
-      letter = string[i];
-      firstI = i;
-      count++;
-      if(string[j]===letter){
-        count++;
+      if(string[j]===string[i]){
+        count+=1;
         if(count > longestCount){
+          firstI = i;
           lastI = j;
           longestCount = count;
         }
-      } else {
-        firstI = '';
-        lastI = '';
-        count = 0;
+      }
+      else {
+        count = 1;
+        break;
       }
     }
   }
+  return [firstI||0, lastI||0];
 }

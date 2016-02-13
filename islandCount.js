@@ -12,60 +12,55 @@ function countIslands (mapStr) {
   var count = 0;
   var splitMap = mapStr.split('\n');
   var islandMap=[];
-  var subArr;
 
- for(var i = 0; i < splitMap.length; i++){
-    subArr = splitMap[i].split('');
-    islandMap.push(subArr);
-}
+  for(var i = 0; i < splitMap.length; i++){
+    islandMap.push(splitMap[i].split(''));
+  }
 
-function inBounds(row, col){
-  if(row < islandMap.length){
-    return false;
+  function inBounds(row, col){
+    if(row < islandMap.length){
+      return false;
+    }
+    if(row > islandMap.length){
+      return false;
+    }
+    if(col > islandMap[0].length){
+      return false;
+    }
+    if(col < 0) {
+      return false;
+    }
   }
-  if(row > islandMap.length){
-    return false;
-  }
-  if(col > subArr.length){
-    return false;
-  }
-  if(col < subArr.length){
-    return false;
-  }
-}
 
 
-function recurse(row, col){
-  if(inBounds(row,col)){
-    if(islandMap[row][col] === 0){
-      count++;
-      if(islandMap[row][col-1] === 0){
-        [row][col-1] = '.';
-      }
-      if(islandMap[row][col+1] === 0){
-        [row][col-1] = '.';
-      }
-      if(islandMap[row-1][col] === 0){
-        [row-1][col] = '.';
-      }
-      if(islandMap[row+1][col] === 0){
-        [row+1][col] = '.';
+  function recurse(row, col){
+    if(inBounds(row,col)){
+      if(islandMap[row][col] === 0){
+        count++;
+        if(islandMap[row][col-1] === 0){
+          [row][col-1] = '.';
+        }
+        if(islandMap[row][col+1] === 0){
+          [row][col-1] = '.';
+        }
+        if(islandMap[row-1][col] === 0){
+          [row-1][col] = '.';
+        }
+        if(islandMap[row+1][col] === 0){
+          [row+1][col] = '.';
+        }
       }
     }
   }
-}
 
- for(var j = 0; j < islandMap.length; j++){
-   for(var k = 0; k < islandMap[j].length; k++){
-    if(inBounds(j,k)){
-     if(islandMap[j][k] === 0){
-      count++;
-      recurse(j,k);
+  for(var j = 0; j < islandMap.length; j++){
+    for(var k = 0; k < islandMap[j].length; k++){
+      if(inBounds(j,k) && islandMap[j][k] === 0){
+        count++;
+        recurse(j,k);
+      }
     }
+  }
 
-    }
-   }
- }
-
-return count;
+  return count;
 }
