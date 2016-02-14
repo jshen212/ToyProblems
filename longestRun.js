@@ -11,7 +11,6 @@ function longestRun (string) {
   var longestCount = 1;
   var firstI;
   var lastI;
-  var isLonger = false;
 
   for(var i = 0; i < string.length; i++, count = 1){
     for(var j = i+1; j < string.length; j++){
