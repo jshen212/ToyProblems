@@ -33,3 +33,18 @@ EXTRA CREDIT
 Important note:
 In mathematics, and generally in CS, matrices are identified as m-by-n, where m is the number of rows and n is the number of columns. So an [i][j] address in a matrix will be i places down, and j places over. This usually matches the way arrays are addressed in code, but keep in mind that it differs from use in geometry and computer graphics, where coordinates of the form (x,y) are usually x units over, and y units down.
 */
+
+function rotateMatrix (matrix) {
+  var m = matrix.length;
+  var n = matrix[0].length;
+
+  var rotated = [];
+
+  for(var i = 0; i < n; i++){
+    rotated[i] = [];
+    for(var j = 0; j < m; j++){
+      rotated[i][j] = matrix[m-1-j][i];
+    }
+  }
+  return rotated;
+}
