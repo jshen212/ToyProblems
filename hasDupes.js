@@ -12,8 +12,6 @@ var hasDuplicates = function(array){
   return false;
 };
 
-
-
 // below version finds duplicates and returns an array with the duplicate values
 
 // var find_dups = function(string) {
