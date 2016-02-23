@@ -10,7 +10,7 @@ var isSquare = function(arr){
   var sqrtNums = [];
 
 // checks if empty array
-  if(arr.length === 0){
+  if(!arr.length){
     return undefined;
   }
 
