@@ -36,45 +36,5 @@ function translateRomanNumeral (romanNumeral) {
     }
   }
 
-  if(!digits.length){
-    return null;
-  }
 
-  if(digits.length === 1){
-    return digits[0];
-  }
-
-
-  for(var j = 0; j < digits.length; j++){
-    if(digits[0] < digits[1]){
-      math.push(digits[1]-digits[0]);
-    }
-
-    else {
-      math.push(digits[j]);
-    }
-  }
-
-  for(var k = 0; k < math.length; k++){
-    if(math[k] > math[k+1]){
-      finalMath.push(math[k]);
-    }
-
-    else if ( math[k] === math[k+1]){
-      finalMath.push(math[k] + math[k+1]);
-    }
-
-    else {
-      finalMath.push(math[k+1] - math[k]);
-    }
-  }
-
-
-  for(var l = 0; l < math.length; l++){
-    if(finalMath[l]){
-      sum += finalMath[l];
-    }
-  }
-
-  return sum;
 }
