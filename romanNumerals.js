@@ -8,8 +8,11 @@ You should return "null" on invalid input.
 */
 
 
-
 function translateRomanNumeral (romanNumeral) {
+  var splitRomans = romanNumeral.split('');
+  var total = 0;
+
+  console.log(splitRomans);
   var DIGIT_VALUES = {
     I: 1,
     V: 5,
@@ -20,21 +23,22 @@ function translateRomanNumeral (romanNumeral) {
     M: 1000
   };
 
-  var splitRomans = romanNumeral.split('');
-  var digits=[];
-  var math = [];
-  var finalMath=[];
-  var sum = 0;
+for(var i = 0; i < splitRomans.length; i++){
+  var current = DIGIT_VALUES[splitRomans[i]];
+  var next = DIGIT_VALUES[splitRomans[i+1]];
 
-  if(romanNumeral === ''){
-    return 0;
+  if(next && current < next){
+    total -= current;
   }
 
-  for(var i = 0; i < splitRomans.length; i++){
-    if(DIGIT_VALUES[splitRomans[i]]){
-      digits.push(DIGIT_VALUES[splitRomans[i]]);
-    }
+  else {
+    total += current;
   }
+}
 
+if(isNaN(total)){
+  return 'null';
+}
 
+  return total;
 }
