@@ -6,51 +6,53 @@ Implement a linked-list
 
 var LinkedList = function (initialValue) {
      // Write your code here
-   this.head = null;
-   this.tail = null;
+   if(initialValue){
+     this.head = {
+       value: initialValue,
+       next: null
+     };
+   } else {
+     this.head = null;
+   }
+   this.tail = this.head;
  };
 
-
-var Node = function(val){
- var node = {};
-   node.value = val;
+ LinkedList.prototype.makeNode = function(value){
+   var node = {};
+   node.value = value;
    node.next = null;
- return node;
-};
+   return node;
+ };
 
 LinkedList.prototype.addToTail= function(val){
 // create new node
-
- // if no head, point head and tail to new node
- if(this.head === null){
-   this.head = addNode;
-   this.tail = addNode;
- }
-
- // if there is a head, point tail to new node
- // point tail's next property to the new node
- else {
-   this.tail.next = addNode;
-   this.tail = addNode;
- }
+  var newTail = this.makeNode(value);
+  if(!this.head){
+    this.head = newTail;
+  } else {
+    this.head.next = newTail;
+  }
+ this.tail = newTail;
 };
 
 
 LinkedList.prototype.removeHead = function(){
- // if head pointer is null, return null
- if(this.head === null){
-   return null;
- }
-
- // if head exists save the value of the head node to a var
- // point the head to the current head's 'next' node
- // delete the current head
- // return the var with the original saved head value
- else {
-   var val = this.head.value;
-   var temp = this.head;
+ if(this.head === this.tail){
+   this.head = null;
+   this.tail = null;
+ } else {
    this.head = this.head.next;
-   delete temp;
-   return val;
  }
+};
+
+LinkedList.prototype.contains = function(target){
+  var node = this.head;
+  while(node){
+    if(node.value === target){
+      return true;
+    } else {
+      node = node.next;
+    }
+  }
+  return false;
 };
