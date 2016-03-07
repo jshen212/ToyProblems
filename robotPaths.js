@@ -53,7 +53,14 @@ function robotPaths (n) {
       board.togglePiece(row, col+1);
       recurse(row, col+1);
     }
+
+    // must check left squares and top squares 
   }
 
+for(var i = 0; i < board.length; i++){
+  for(var j = 0; j < board[i].length; j++){
+    recurse(i, j);
+  }
+}
   return count;
 }
