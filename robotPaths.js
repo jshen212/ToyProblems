@@ -9,58 +9,65 @@ Parameters:
 n (required) - amount of rows/columns (max 6)
 */
 
+function makeBoard(n) {
+  var board = [];
+  for (var i = 0; i < n; i++) {
+    board.push([]);
+    for (var j = 0; j < n; j++) {
+      board[i].push(false);
+    }
+  }
+  board.togglePiece = function(i, j) {
+    this[i][j] = !this[i][j];
+  };
+  board.hasBeenVisited = function(i, j) {
+    return !!this[i][j];
+  };
+  return board;
+}
+
+
 function robotPaths (n) {
   var board = makeBoard(n);
   var count = 0;
 
-  function inbounds(row, col){
-    if(row < 0){
-      return false;
+  function inbounds(x, y){
+    if(x >= 0 && y >= 0 && x < n && y < n){
+      return true;
     }
 
-    if(row > board.length){
-      return false;
-    }
-
-    if(col < 0){
-      return false;
-    }
-
-    if(col > board[0].length){
-      return false;
-    }
-
-    return true;
+    return false;
   }
 
+  function recurse(x, y){
+    board.togglePiece(x, y);
 
-  function recurse(row, col){
-    if(row === col){
+    if(x === n-1 && y === n-1){
       count++;
+      return;
     }
 
-    if(!hasBeenVisited(row, col) && inbounds(row,col)){
-      board.togglePiece(row, col);
-      recurse(row, col);
+    if(inbounds(x+1,y) && !board.hasBeenVisited(x+1, y)){
+      recurse(x+1, y);
+      board.togglePiece(x+1, y);
     }
 
-    if(!hasBeenVisited(row+1, col) && inbounds(row+1,col)){
-      board.togglePiece(row+1, col);
-      recurse(row+1, col);
+    if(inbounds(x,y+1) && !board.hasBeenVisited(x, y+1)){
+      recurse(x, y+1);
+      board.togglePiece(x, y+1);
     }
 
-    if(!hasBeenVisited(row, col+1) && inbounds(row, col+1)){
-      board.togglePiece(row, col+1);
-      recurse(row, col+1);
+    if(inbounds(x-1, y) && !board.hasBeenVisited(x-1, y)){
+      recurse(x-1, y);
+      board.togglePiece(x-1, y);
     }
 
-    // must check left squares and top squares 
+    if(inbounds(x, y-1) && !board.hasBeenVisited(x, y-1)){
+      recurse(x, y-1);
+      board.togglePiece(x, y-1);
+    }
   }
 
-for(var i = 0; i < board.length; i++){
-  for(var j = 0; j < board[i].length; j++){
-    recurse(i, j);
-  }
-}
+  recurse(0,0);
   return count;
 }
