@@ -7,51 +7,27 @@ Parameters:
 string (required) - a string of characters.
 */
 
-// function allAnagrams(string){
-//   var copy = string.slice();
-//   var word = '';
-//   var results = [];
-//
-//
-//   function recurse(input){
-//     if(word.length === string.length){
-//       if(results.indexOf(word)<0){
-//         results.push(word);
-//       }
-//     }
-//
-//     if(results.length===0){
-//       results.push(copy);
-//     }
-//
-//     for(var i=0; i<input.length; i++){
-//       word+=copy.splice(0,1);
-//       copy = copy.reverse();
-//     }
-//     copy = string.slice();
-//     }
-//
-//   recurse();
-//   return results;
-// }
-
 function allAnagrams(string){
-  var word = '';
-  var left;
   var results = [];
+  var left = string.split('');
 
 
   function recurse(addWord, left){
     if(addWord.length === string.length){
-      results.push(addWord);
+      if(results.indexOf(addWord) < 0){
+        results.push(addWord);
+      }
+      return;
     }
 
     for(var i=0; i<left.length; i++){
-      word += left[i];
-      left = string.slice(i);
+      var temp = left.slice();
+      var word = addWord + left[i];
+      temp.splice(i, 1);
+      recurse(word, temp);
     }
   }
 
-  recurse('', string);
+  recurse('', left);
   return results;
 }
