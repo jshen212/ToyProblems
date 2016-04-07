@@ -17,26 +17,21 @@ array:
 */
 
 function arrayception (array) {
-  var count = 0;
   var longest = 0;
 
-  var recurse = function(el){
-    for(var i = 0; i < el.length; i++){
-      if(Array.isArray(el[i])){
-        if(el[i].length){
-        count+=1;
-        if(count > longest){
-          longest = count;
-        }
-        recurse(el[i]);
-       }
+  var recurse = function(arr, lvl){
+    if(!Array.isArray(arr)){
+      if(lvl > longest){
+        longest = lvl;
       }
-      if(count < longest){
-        count = 0;
+    } else {
+      lvl+=1;
+      for(var i = 0; i < arr.length; i++){
+        recurse(arr[i], lvl);
       }
     }
   };
 
-    recurse(array);
-    return longest;
+  recurse(array, 0);
+  return longest;
 }
