@@ -90,6 +90,16 @@ string.match(/^Mission:\ssuccessful$/);
 
 
 /*
+Match	1.   abc	To be completed
+Match	2.	abc	To be completed
+Match	3.           abc	To be completed
+Skip	4.abc
+*/
+
+string.match(/\sabc/);
+
+
+/*
 Task	Text	Capture Groups
 Capture	file_record_transcript.pdf
 Capture	file_07241999.pdf
@@ -108,10 +118,8 @@ string.match(/[0-9]{1,}\sfiles?\sfound\?/);
 
 
 /*
-Match	1.   abc	To be completed
-Match	2.	abc	To be completed
-Match	3.           abc	To be completed
-Skip	4.abc
+Capture	Jan 1987
+Capture	May 1969	
+Capture	Aug 2011
 */
-
-string.match(/\sabc/);
+string.match(/\w+\s+(\d+)/);
