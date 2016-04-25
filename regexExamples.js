@@ -92,7 +92,26 @@ string.match(/^Mission:\ssuccessful$/);
 /*
 Task	Text	Capture Groups
 Capture	file_record_transcript.pdf
-Capture	file_07241999.pdf	
+Capture	file_07241999.pdf
 Skip	testfile_fake.pdf.tmp
 */
 string.match(/^(file_)\w+.pdf$/);
+
+
+/*
+Match	1 file found?	To be completed
+Match	2 files found?	To be completed
+Match	24 files found?	To be completed
+Skip	No files found.
+*/
+string.match(/[0-9]{1,}\sfiles?\sfound\?/);
+
+
+/*
+Match	1.   abc	To be completed
+Match	2.	abc	To be completed
+Match	3.           abc	To be completed
+Skip	4.abc
+*/
+
+string.match(/\sabc/);
