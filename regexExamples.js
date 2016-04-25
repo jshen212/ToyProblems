@@ -8,7 +8,7 @@ Match	abc
 string.match(/.*/); // returns array [abcdefg, abcde, abc]
 
 // Method 2
-string.match(/\w+/) // returns array [abcdefg, abcde, abc]
+string.match(/\w+/); // returns array [abcdefg, abcde, abc]
 
 
 /*
@@ -60,3 +60,39 @@ Skip	ccz
 */
 
 string.match(/[ABC].*/);
+
+
+/*
+Match	wazzzzup	To be completed
+Match	wazzzup	To be completed
+Skip	wazup
+*/
+
+string.match(/waz{2,4}up/);
+
+
+/*
+
+Match	aaaabcc	To be completed
+Match	aabbbbc	To be completed
+Match	aacc	To be completed
+Skip	a
+*/
+string.match(/a*b*c*/);
+
+
+/*
+Match	Mission: successful	To be completed
+Skip	Last Mission: unsuccessful	To be completed
+Skip	Next Mission: successful upon capture of target
+*/
+string.match(/^Mission:\ssuccessful$/);
+
+
+/*
+Task	Text	Capture Groups
+Capture	file_record_transcript.pdf
+Capture	file_07241999.pdf	
+Skip	testfile_fake.pdf.tmp
+*/
+string.match(/^(file_)\w+.pdf$/);
