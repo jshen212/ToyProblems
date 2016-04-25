@@ -119,7 +119,25 @@ string.match(/[0-9]{1,}\sfiles?\sfound\?/);
 
 /*
 Capture	Jan 1987
-Capture	May 1969	
+Capture	May 1969
 Capture	Aug 2011
 */
-string.match(/\w+\s+(\d+)/);
+string.match((/\w+\s+(\d+)/));
+
+
+/*
+
+Capture	1280x720
+Capture	1920x1600
+Capture	1024x768
+*/
+string.match(/((\d+)x(\d+))/);
+
+
+/*
+Match	I love cats	To be completed
+Match	I love dogs	To be completed
+Skip	I love logs	To be completed
+Skip	I love cogs
+*/
+string.match(/I love (cats|dogs)/);
