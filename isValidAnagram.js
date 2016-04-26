@@ -1,28 +1,32 @@
-function isValidAnagram(s1, s2){
-  var results = [];
-  var splitS1 = s1.split('');
+/*
+Given two strings s and t, write a function to determine if t is an anagram of s.
 
-  var recurse = function(addWord, splitS1){
-    if(addWord.length === s1.length){
-      if(results.indexOf(addWord) === -1){
-        results.push(addWord);
-      }
-      return;
+For example,
+s = "anagram", t = "nagaram", return true.
+s = "rat", t = "car", return false.
+
+Note:
+You may assume the string contains only lowercase alphabets.
+
+Follow up:
+What if the inputs contain unicode characters? How would you adapt your solution to such case?
+*/
+
+
+var isAnagram = function(s, t) {
+  var splitS = s.split('');
+  var splitT = t.split('');
+
+  while(splitS.length > 0){
+    var letter = splitS.shift();
+    var s2Index = splitT.indexOf(letter);
+    if(s2Index === -1){
+      return false;
     }
-
-    for(var i = 0; i < splitS1.length; i++){
-      var temp = splitS1.slice();
-      var word = addWord + splitS1[i];
-      temp.splice(i, 1);
-      recurse(word, temp);
+    else {
+      splitT.splice(s2Index, 1);
     }
-  };
+  }
 
-recurse('', splitS1);
-// console.log(results);
-if(results.indexOf(s2) !== -1){
-  return true;
-} else {
-  return false;
-}
-}
+  return splitT.length === 0;
+};
