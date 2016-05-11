@@ -17,3 +17,17 @@ function largestPrime(n){
   // when number is not divisible by any number between 2 and the number, return the number
   return n;
 }
+
+// solution 2
+// function largestPrime(n){
+//   var i = 2;
+//   while(i < n){
+//     while(n % i === 0){
+//       (function(){
+//          n = n / i;
+//       })();
+//     }
+//     i++;
+//   }
+//   return n;
+// }
