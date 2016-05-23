@@ -23,7 +23,7 @@ var asyncMap = function(tasks, callback){
 
   for(var i = 0; i < tasks.length; i++){
     (function(i){
-      tasks[i](function(val){
+      tasks[i](function(tasks[i]){
         results[i] = val;
         count+=1;
         if(count===tasks.length){
@@ -33,3 +33,15 @@ var asyncMap = function(tasks, callback){
       })(i);
     }
   };
+
+//   var asyncMap = function(jobs, cb) {
+//   var results = [];
+//   var finished = jobs.length;
+//
+//   jobs.forEach(function(job, i) {
+//     job(function(result) {
+//       results[i] = result;
+//       if (--finished === 0) cb(results);
+//     });
+//   });
+// };
