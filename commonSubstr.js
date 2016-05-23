@@ -35,3 +35,17 @@ function SubstringTest(str1, str2){
       return true;
   return false;
 }
+
+// function substringtest(s1, s2) {
+//   var s1lower = s1.toLowerCase().split('');
+//   var s2lower = s2.toLowerCase().split('');
+//   var compare = [];
+//
+//   for(var i = 0; i < s2.length; i++) {
+//     if(s1.indexOf(s2[i]) !== -1){
+//       compare.push(s1[i]);
+//     }
+//   }
+//
+//   return compare.length > 0 && compare.join('') === s2;
+// }
