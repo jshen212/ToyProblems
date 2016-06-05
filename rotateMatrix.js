@@ -55,13 +55,16 @@ function rotateMatrix (matrix) {
   var m = matrix.length;
   var n = matrix[0].length;
   var rotated = [];
+  var results = [];
 
 for(var i = 0; i < m; i++){
     rotated[i] = [];
   for(var j = 0; j < n; j++){
     rotated[i][j] = matrix[Math.abs(j)][m-i-1];
+    results.push(matrix[Math.abs(j)][m-i-1]);
   }
 }
 
+console.log(results);
 return rotated;
 }

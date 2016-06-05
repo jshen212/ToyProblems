@@ -5,22 +5,19 @@ Given a number of rounds n, return all the possible rock-paper-scissors play pos
 
 function rockPaperPermutation (roundCount) {
   var results = [];
-  var rpsChoices = ['r','p','s'];
+  var choices = ['r','p','s'];
 
   var recurse = function(input){
-    if(input===0){
-    return;
-    }
+    input = input || [];
     if(input.length === roundCount){
       results.push(input);
     } else {
-      for(var i=0; i<rpsChoices.length; i++){
-        recurse(input+rpsChoices[i]);
+      for(var i = 0; i < choices.length; i++){
+        recurse(input + choices[i]);
       }
     }
   };
-  recurse(roundCount);
+
+  recurse('');
   return results;
 }
-
-rockPaperPermutation(0);

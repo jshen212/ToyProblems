@@ -24,7 +24,7 @@ var asyncMap = function(tasks, callback){
   for(var i = 0; i < tasks.length; i++){
     (function(i){
       tasks[i](function(tasks[i]){
-        results[i] = val;
+        results[i] = tasks[i]();
         count+=1;
         if(count===tasks.length){
           callback(results);

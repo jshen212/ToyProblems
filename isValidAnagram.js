@@ -17,6 +17,10 @@ var isAnagram = function(s, t) {
   var splitS = s.split('');
   var splitT = t.split('');
 
+  if(splitS.length !== splitT.length) {
+    return false;
+  }
+
   while(splitS.length > 0){
     var letter = splitS.shift();
     var s2Index = splitT.indexOf(letter);

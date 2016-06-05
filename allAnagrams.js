@@ -9,7 +9,7 @@ string (required) - a string of characters.
 
 function allAnagrams(string){
   var results = [];
-  var left = string.split('');
+  var splitString = string.split('');
 
 
   function recurse(addWord, left){
@@ -28,6 +28,6 @@ function allAnagrams(string){
     }
   }
 
-  recurse('', left);
+  recurse('', splitString);
   return results;
 }

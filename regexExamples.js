@@ -115,6 +115,7 @@ Match	24 files found?	To be completed
 Skip	No files found.
 */
 string.match(/[0-9]{1,}\sfiles?\sfound\?/);
+string.match(/\d+ files? found\?/);
 
 
 /*

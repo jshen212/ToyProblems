@@ -45,36 +45,35 @@ function countIslands (mapStr) {
 
 
   function recurse(row, col){
-      if(islandMap[row][col] === '0' && inBounds(row,col)){
-        islandMap[row][col] = '.';
-
-        if(inBounds(row,col-1) && islandMap[row][col-1] === '0'){
-          recurse(row,col-1);
-        }
-
-        if(inBounds(row,col+1) && islandMap[row][col+1] === '0'){
-          recurse(row,col+1);
-        }
-
-        if(inBounds(row-1,col) && islandMap[row-1][col] === '0'){
-          recurse(row-1,col);
-        }
-
-        if(inBounds(row+1,col) && islandMap[row+1][col] === '0'){
-          recurse(row+1,col);
-
-        }
-      }
+    if(inBounds(row,col) && islandMap[row][col] === '0'){
+      islandMap[row][col] = '.';
     }
 
-    for(var j = 0; j < islandMap.length; j++){
-      for(var k = 0; k < islandMap[j].length; k++){
-        if(islandMap[j][k]==='0'){
-          count++;
-          recurse(j,k);
-        }
-      }
+    if(inBounds(row,col-1) && islandMap[row][col-1] === '0'){
+      recurse(row,col-1);
     }
 
-    return count;
+    if(inBounds(row,col+1) && islandMap[row][col+1] === '0'){
+      recurse(row,col+1);
+    }
+
+    if(inBounds(row-1,col) && islandMap[row-1][col] === '0'){
+      recurse(row-1,col);
+    }
+
+    if(inBounds(row+1,col) && islandMap[row+1][col] === '0'){
+      recurse(row+1,col);
+    }
+  }
+
+  for(var j = 0; j < islandMap.length; j++){
+    for(var k = 0; k < islandMap[j].length; k++){
+      if(islandMap[j][k]==='0'){
+        count++;
+        recurse(j,k);
+      }
+    }
+  }
+
+  return count;
 }

@@ -10,7 +10,7 @@ function reverse(string){
       return revString;
     }
 
-    revString += splitString.pop();
+    revString += left.pop();
     return recurse(revString, splitString);
   };
 

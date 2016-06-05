@@ -13,22 +13,49 @@ arr:
 [ "cat", "dog", "dig", "cat" ]	"cat"
 */
 
-function evenOccurrence (arr) {
-  var count = 0;
+
+// time complexity = O(n^2)
+
+// function evenOccurrence (arr) {
+//   var count = 0;
+//
+//   for(var i = 0; i < arr.length; i++){
+//     for(var j = 0; j < arr.length; j++){
+//       if(arr[i] === arr[j]){
+//         count += 1;
+//       }
+//     }
+//     if(count % 2 === 0){
+//       return arr[i];
+//     }
+//
+//     else {
+//       count = 0;
+//     }
+//   }
+//   return null;
+// }
+
+
+// refactored to optimize time complexity
+// time complexity = O(n)
+
+function evenOccurrence(arr){
+  var obj = {};
 
   for(var i = 0; i < arr.length; i++){
-    for(var j = 0; j < arr.length; j++){
-      if(arr[i] === arr[j]){
-        count += 1;
-      }
-    }
-    if(count % 2 === 0){
-        return arr[i];
-    }
-
-    else {
-      count = 0;
+    if(!obj[arr[i]]){
+      obj[arr[i]] = 1;
+    } else {
+      obj[arr[i]]++;
     }
   }
+
+  for(var j = 0; j < arr.length; j++){
+    if(obj[arr[j]] % 2 === 0){
+      return arr[j];
+    }
+  }
+
   return null;
 }
